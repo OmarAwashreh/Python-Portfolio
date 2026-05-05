@@ -33,7 +33,7 @@ It's a terminal-based playground, but I'm incredibly proud of how clean, robust,
 1. Clone the repository to your local machine:
 
    ```bash
-   git clone [https://github.com/yourusername/your-repo-name.git](https://github.com/yourusername/your-repo-name.git)
+   git clone [https://github.com/OmarAwashreh/Python-Portfolio.git](https://github.com/OmarAwashreh/Python-Portfolio.git)
 
 
 2. Ensure you have Python 3 installed on your system.
@@ -41,7 +41,7 @@ It's a terminal-based playground, but I'm incredibly proud of how clean, robust,
 3. Open your terminal and navigate into the project directory:
    
    ```bash
-   cd your-repo-name
+   cd Python-Portfolio
 
 4. Run any of the individual scripts using Python:
 
