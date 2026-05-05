@@ -43,7 +43,7 @@ It's a terminal-based playground, but I'm incredibly proud of how clean, robust,
    ```bash
    cd your-repo-name
 
-4.Run any of the individual scripts using Python:
+4. Run any of the individual scripts using Python:
 
-  ```bash
-  python TheLiveDJQueueManager.py
+   ```bash
+   python TheLiveDJQueueManager.py
