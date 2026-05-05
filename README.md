@@ -6,9 +6,9 @@ A curated collection of interactive command-line applications built to master fu
 
 | Project | Description | Core Concepts Explored | 
  | ----- | ----- | ----- | 
-| [**💰 The Greedy Cash Register**](./TheGreedyCashRegister.py) | A checkout simulator that validates payments and dispenses exact change using the fewest possible bills and coins. | Greedy Algorithms, `while` Loops, Modulo Math | 
-| [**✈️ The Secure Aeronautical Black Box Analyzer**](./TheSecureAeronauticalBlackBoxAnalyzer.py) | A telemetry parser that scans immutable flight logs to extract maximum speeds and calculate altitude differentials. | Tuples, Immutability, Sequence Unpacking, Slicing | 
-| [**🎧 The Live DJ Queue Manager**](./TheLiveDJQueueManager.py) | A dynamic, menu-driven tracklist simulator that handles standard queuing, VIP line-skipping, and duplicate prevention. | Lists, Array Methods, `try/except` Error Handling | 
+| **💰 The Greedy Cash Register** | A checkout simulator that validates payments and dispenses exact change using the fewest possible bills and coins. | Greedy Algorithms, `while` Loops, Modulo Math | 
+| **✈️ The Secure Aeronautical Black Box Analyzer** | A telemetry parser that scans immutable flight logs to extract maximum speeds and calculate altitude differentials. | Tuples, Immutability, Sequence Unpacking, Slicing | 
+| **🎧 The Live DJ Queue Manager** | A dynamic, menu-driven tracklist simulator that handles standard queuing, VIP line-skipping, and duplicate prevention. | Lists, Array Methods, `try/except` Error Handling | 
 
 ## ✨ Technologies
 
