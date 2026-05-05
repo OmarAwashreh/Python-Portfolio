@@ -33,7 +33,7 @@ It's a terminal-based playground, but I'm incredibly proud of how clean, robust,
 1. Clone the repository to your local machine:
 
    ```bash
-   git clone [https://github.com/OmarAwashreh/Python-Portfolio.git](https://github.com/OmarAwashreh/Python-Portfolio.git)
+   git clone https://github.com/OmarAwashreh/Python-Portfolio.git
 
 
 2. Ensure you have Python 3 installed on your system.
