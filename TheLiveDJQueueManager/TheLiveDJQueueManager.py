@@ -1,46 +1,103 @@
-print("-----The Secure Aeronautical Black Box Analyzer-----")
+# The Live DJ Queue Manager
 
-flight_log = (("2026-04-25T10:00:00Z", 51.4700, -0.4543, 12000, 450),
-              ("2026-04-25T10:05:00Z", 52.2053, -0.1195, 14500, 470),
-              ("2026-04-25T10:10:00Z", 53.3498, -2.2724, 30000, 520), 
-              ("2026-04-25T10:15:00Z", 54.5973, -5.9301, 34000, 540),
-              ("2026-04-25T10:20:00Z", 55.9533, -3.1883, 36000, 560),
-              ("2026-04-25T10:25:00Z", 57.1497, -2.0943, 35000, 550))
+is_running = True
+playlist = []
 
-for log in flight_log:
-    print(f"At {log[0]}, the aircraft was " \
-            f"at {log[3]} ft traveling {log[4]} knots.")
-
-middle_log = flight_log[1:5]
+while is_running:
+    print("\n--- DJ Queue Menu ---")
+    print("1) Welcome")
+    print("2) Standard Add")
+    print("3) VIP Insert")
+    print("4) Play Next")
+    print("5) Remove Specific Song")
+    print("6) Replace Song at Index")
+    print("7) Display Queue")
+    print("8) Clear All")
+    print("9) Exit")
     
-(takeoff, *cruising, landing) = (flight_log[0], flight_log[1:5], flight_log[5])
-
-high_flight = ()
-for log in flight_log:
-    if log[3] > 10000:
-        high_flight += (log, )
-
-def highest_flight(flight_log):
-    max_speed = 0
-    timestamp = "null"
-
-    for log in flight_log:
-        if log[4] > max_speed:
-            max_speed = log[4]
-            timestamp = log[0]
-            highest_plane = log
-    
-    highest_plane = (max_speed, timestamp)
-    
-    return highest_plane
-
-(max_speed, timestamp) = highest_flight(flight_log)
-
-corrected_flight_log = flight_log[4][0:3] + (35000,) + flight_log[4][4:]
-
-for i in range(len(flight_log), 0, -1):
-    if i < len(flight_log):
-        change = flight_log[i][3] - flight_log[i - 1][3]
-        print(f"Change between ping {i} and ping {i-1} is {change}")
-    else:
+    try:
+        choice = int(input("\nEnter your choice (1-9): "))
+    except ValueError:
+        print("Invalid input. Please enter a number.")
         continue
+    
+    if choice == 1:
+        print("Welcome to the DJ Booth!")
+
+    elif choice == 2:
+        insert_song = input("Enter the song name: ").lower()
+        if insert_song in playlist:
+            print(f"WARNING: '{insert_song.title()}' is already in the queue. No duplicates allowed.")
+        else:
+            playlist.append(insert_song)
+            print(f"Added '{insert_song.title()}' to the queue.")
+
+    elif choice == 3:
+        insert_song = input("Enter the VIP song name: ").lower()
+        if insert_song in playlist:
+            print(f"WARNING: '{insert_song.title()}' is already in the queue. No duplicates allowed.")
+        else:
+            # VIP goes straight to the front (index 0)
+            playlist.insert(0, insert_song)
+            print(f"VIP INSERT: '{insert_song.title()}' is now next!")
+
+    elif choice == 4:
+        # Prevent the empty pop crash
+        if len(playlist) == 0:
+            print("The queue is currently empty. Please add a song first.")
+        else:
+            current_song = playlist.pop(0)
+            print(f"🎧 NOW PLAYING: {current_song.title()} 🎧")
+
+    elif choice == 5:
+        remove_song = input("Enter the song name to remove: ").lower()
+        try:
+            playlist.remove(remove_song)
+            print(f"Removed '{remove_song.title()}' from the queue.")
+        except ValueError:
+            print(f"Error: '{remove_song.title()}' is not in the queue.")
+
+    elif choice == 6:
+        new_song = input("Enter the NEW song name: ").lower()
+        
+        # Check for duplicates before replacing
+        if new_song in playlist:
+            print(f"WARNING: '{new_song.title()}' is already in the queue.")
+            continue
+            
+        try:
+            # Note: Display shows 1-based indexing, but Python uses 0-based indexing under the hood.
+            # To make it user friendly, we could ask for the display number and subtract 1.
+            # But for this test, we are keeping it strictly to Python indexes as you wrote it.
+            index = int(input("Enter the Python index number to replace: "))
+            
+            if 0 <= index < len(playlist):
+                old_song = playlist[index]
+                playlist[index] = new_song
+                print(f"Replaced '{old_song.title()}' with '{new_song.title()}'.")
+            else:
+                print("Error: Index is out of range.")
+        except ValueError:
+            print("Invalid input. Index must be a number.")
+
+    elif choice == 7:
+        print("\n--- Current Queue ---")
+        if len(playlist) == 0:
+            print("The queue is empty.")
+        else:
+            # Counter moved outside the loop!
+            count = 1
+            for song in playlist:
+                print(f"{count}. {song.title()}")
+                count += 1
+
+    elif choice == 8:
+        playlist.clear()
+        print("Queue has been wiped clean!")
+        
+    elif choice == 9:
+        print("Shutting down the DJ Booth. Goodnight!")
+        is_running = False
+    
+    else:
+        print("Wrong Input. Please choose a number between 1 and 9.")
